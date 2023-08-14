@@ -1,0 +1,202 @@
+paths: 
+  /api/products/:
+    get:
+      summary: Obtiene todos los productos
+      tags: 
+        - products
+      responses:
+        "200":
+          description: Los productos fueron obtenidos correctamente
+          content: 
+            applications/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        "500":
+          description: error interno del server , usalmente generado por una query defctuosa o un fallo con la base de datos. 
+    post:
+      summary: Crea un producto nuevo
+      tags: 
+        - products
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema: 
+              $ref: '#/components/requestBodies/updateProduct'
+      responses:
+        "201":
+          description: El producto fue creado correctamente
+               
+
+  # /api/products/view:
+  #   get:
+  #     summary: Obtiene todos los productos y los muestra en una vista HTML
+  #     tags: 
+  #       - products
+  #     responses:
+  #       "200":
+  #         description: Los productos fueron obtenidos correctamente
+  #         content: 
+  #           applications/json:
+  #             schema:
+  #               type: array
+  #               items:
+  #                 $ref: '#/components/schemas/Product'
+  #       "500":
+  #         description: error interno del server , usalmente generado por una query defctuosa o un fallo con la base de datos. 
+
+
+  /api/products/{pid}:
+    get:
+      summary: Obtiene un producto en base un pid
+      tags: 
+        - products
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          description: El id del producto que se desea solicitar
+          schema:
+            type: string
+      responses:
+        "200":
+          description: El producto fue obtenido correctamente
+          content: 
+            applications/json:
+              schema:
+                  $ref: '#/components/schemas/Product'
+    put:
+      summary: Se actualiza un usuario en base un pid
+      tags: 
+        - products
+      parameters:
+      - name: pid
+        in: path
+        required: true
+        description: El id del producto que se desea actualizar
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/requestBodies/upadateProduct'
+      responses:
+        "200":
+          description: El producto fue actualizado correctamente
+          content: 
+            applications/json:
+              schema:
+                  $ref: '#/components/schemas/Product'
+    delete:
+      summary: Se elimina el producto en base a un pid
+      tags: 
+        - products
+      parameters:
+      - name: pid
+        in: path
+        required: true
+        description: El id del producto que se desea eliminar
+        schema:
+          type: string
+      responses:
+        "200":
+          description: El producto fue eliminado correctamente
+          content: 
+            applications/json:
+              schema:
+                  $ref: '#/components/schemas/Product'
+        
+
+components: 
+  schemas: 
+    Product:
+      type: object
+      properties: 
+        _id:
+          type: string
+          description: Id autogenerado por Mongo.
+        title:
+          type: string
+          description: El nombre del producto.
+        description:
+          type: string
+          description: La descripcion del producto.
+        price:
+          type: number
+          description: El precio del producto por unidad.
+        thumbnail:
+          type: string
+          description: La url de la imagen del producto
+        code:
+          type: string
+          description: El codigo del producto
+        stock:
+          type: number
+          description: Stock disponible del productos
+        category:
+          type: string
+          description: La categoria o tipo de producto
+        status:
+          type: boolean
+          description: Muestra si el producto esta en stock o no
+        owner:
+          type: string
+          description: El dueño del producto
+          
+      example: 
+        _id: ObjectId("640112da42c1aa6555ab82eb")
+        title: producto prueba 2
+        description: Este es un producto prueba 2 
+        price:  200
+        thumbnail: Sin imagen
+        code: abc2
+        stock: 103
+        category: categoria nueva
+        status: true
+        owner: admin
+
+  requestBodies: 
+    updateProduct: 
+      type: object
+      properties: 
+        title:
+          type: string
+          description: El nombre del producto.
+        description:
+          type: string
+          description: La descripcion del producto.
+        price:
+          type: number
+          description: El precio del producto por unidad.
+        thumbnail:
+          type: string
+          description: La url de la imagen del producto
+        code:
+          type: string
+          description: El codigo del producto
+        stock:
+          type: number
+          description: Stock disponible del productos
+        category:
+          type: string
+          description: La categoria o tipo de producto
+        status:
+          type: boolean
+          description: Muestra si el producto esta en stock o no
+        owner:
+          type: string
+          description: El dueño del producto
+      example: 
+        title: producto prueba 2
+        description: Este es un producto prueba 2 
+        price:  200
+        thumbnail: Sin imagen
+        code: abc2
+        stock: 103
+        category: categoria nueva
+        status: true
+        owner: admin

@@ -1,0 +1,25 @@
+<div>
+    <h2>Admin</h2>
+    <form action="view" method="post" id="search">
+        <input type="email" name="email" placeholder="Email" aria-label="Login" autocomplete="nickname" required>
+        <button type="submit" class="contrast">Search</button>
+    </form>
+    <div>
+        <h2>User searched: </h2>
+        <div id="user-info">
+            {{#if user}}
+            <h3>First Name: {{user.first_name}}</h2>
+                <h3>Last Name: {{user.last_name}}</h2>
+                    <h3>Email: {{user.email}}</h2>
+                        <div>
+                            <h3>Role: {{user.role}}</h3> <button onclick=changeRole(this) id={{user._id}}>Modify</button>
+                        </div>
+                        <button onclick=deleteUser(this) id={{user._id}}>Delete</button>
+                        {{else}}
+                        <h2>Search user!</h2>
+                        {{/if}}
+        </div>
+    </div>
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/js/index.js"></script>

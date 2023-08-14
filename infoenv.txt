@@ -1,0 +1,8 @@
+PORT= 8080
+CONNECTION= 'mongodb+srv://iscmond:6J1jEnBNBxi4QOyM@codercluster.tfnyhde.mongodb.net/retryWrites=true&w=majority/ecommerce'
+retryWrites=true&w=majority"
+BCRYPTGENSALT= 10
+JWTKEY= "secretCode"
+PERSISTENCE= "MONGO"
+MAILPASSWORD= "ximPasswordCH"
+LOGGER= "PRODUCTION"

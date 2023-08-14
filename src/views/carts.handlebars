@@ -1,0 +1,21 @@
+<div>
+    <h3>Cart Id: {{cart._id}}</h3>
+    {{#each cart.products}}
+    <div>
+        <ul>
+            <li>
+                <div>
+                    Product {{this._id}}: {{this.quantity}} pzs
+                </div>
+                <div>
+                    <button onclick=addQuantity(this) id={{this._id}}>+</button>
+                    <button onclick=remove(this) id={{this._id}}>Remove</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+    {{/each}}
+    <button onclick=finish(this) id={{cart._id}}>Finish Purchase</button>
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/js/index.js"></script>

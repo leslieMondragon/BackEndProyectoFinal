@@ -18,6 +18,7 @@ Este repositorio contiene el código fuente del backend de un sistema de e-comme
 
 1. Clona este repositorio en tu máquina local.
 2. Instala las dependencias ejecutando `npm install`.
+3. Configurar variables de entorno .env
 
 ```js
 npm i

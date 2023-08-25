@@ -1,7 +1,7 @@
 import { Router } from "express";
 import UserVisible from "../dao/DTOs/userVisible.js";
 // import passport from "passport";
-//import UserModel from "../dao/models/user.js";
+// import UserModel from "../dao/models/user.js";
 
 const router = Router()
 
@@ -17,5 +17,3 @@ router.get('/current', async (req, res)=> {
 })
 
 export default router
-
-

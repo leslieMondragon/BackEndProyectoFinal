@@ -3,7 +3,7 @@ import pkg from 'mongoose-paginate-v2';
 
 const userCollection = 'usuarios'
 
-const UserSchema = new Schema({
+const UserSchema = Schema({
     first_name: {
         type: String,
         required: true

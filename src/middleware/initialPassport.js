@@ -1,7 +1,6 @@
 import passport from "passport";
 import local from "passport-local";
-import { Strategy as GithubStrategy } from "passport-github2";
-//import GithubStrategy from "passport-github2";
+import GithubStrategy from "passport-github2";
 import { createHash, isValidPassword } from "../utils/bycriptPass.js";
 import { userService } from "../services/index.js";
 import { Strategy, ExtractJwt } from "passport-jwt";
@@ -24,10 +23,10 @@ function initializePassport() {
     "github",
     new GithubStrategy(
       {
-        clientID: "Iv1.aaaf5f6862926597",
-        clientSecret: "5fc63897c7ee96464ec7ebc227f5004424d84fc2",
+        clientID: "6bc0808b40e3af391aa1",
+        clientSecret: "38038711cb11c1ffba7520c87e95fb05941e1e4f",
         callbackURL: "http://localhost:8080/auth/githubcallback",
-        scope: ["user:email"],
+        scope: "user:email",
       },
       async (accessToken, refreshToken, profile, done) => {
         console.log("Profile: ", profile);

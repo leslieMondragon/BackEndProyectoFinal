@@ -1,5 +1,5 @@
-//import CustomError from "../services/errors/CustomError.js";
-//import { EErrors } from "../services/errors/enums.js";
+import CustomError from "../services/errors/CustomError.js";
+import { EErrors } from "../services/errors/enums.js";
 export default class ProductService {
     constructor(dao){
         this.dao = dao

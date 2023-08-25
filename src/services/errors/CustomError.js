@@ -1,10 +1,11 @@
-class CustomError extends Error {
-    constructor({ name = 'Error', cause, message, code = 1 }) {
-        super(message);
-        this.cause = cause;
-        this.name = name;
-        this.code = code;
+class CustomError {
+    static createError({name='Error', cause, message, code=1}) {           
+        const error = new Error(message, {cause})
+        // error.cause = cause
+        error.name = name
+        error.code = code
+        throw error
     }
 }
 
-export default CustomError;
+export default CustomError
